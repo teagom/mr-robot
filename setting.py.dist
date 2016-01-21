@@ -1,0 +1,17 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+'''
+    settings
+'''
+# array size
+model = [False]*49
+
+# debug mode. Show line command to debug
+debug = False
+
+# smtp
+sender = 'user@email.com'
+smtpserver = 'smtp.email.com'
+username = "user@email.com"
+password = "password"
