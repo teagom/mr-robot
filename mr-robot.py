@@ -50,8 +50,8 @@ for cfg in args.integers:
 
     # once backup
     if x[1] == 'once':
-        cmd_destiny_backup_app = 'mkdir -p %s/%s' % (x[3], dateformat('once'))
-        destiny_backup_app = '%s' % (base_backup_app)
+        cmd_destiny_backup_app = 'mkdir -p %s/%s' % (base_backup_app, dateformat('once'))
+        destiny_backup_app = '%s/%s' % (base_backup_app, dateformat('once'))
 
     # daily backup
     if x[1] == 'daily':
