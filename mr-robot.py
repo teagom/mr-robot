@@ -5,24 +5,29 @@ import argparse
 from external import cmd_run, sendmail, dateformat
 
 '''
-    Mr Script. Dedicated the serie Mr Robot
+    Mr-Robot-Backup. Dedicated the serie Mr Robot.
 
-    Tiago de Souza Moraes / 13 10 2015 - 10:48
-    teagom@gmail.com
+    author:
+        Tiago de Souza Moraes
+        teagom@gmail.com
 
-    1 - Dump and zip a Data Base
+    required lib:
+        argparse
+        sshpass
+
+    1 - Dump and compress a Data Base
     2 - Compact file and folder
-    3 - copy backup to remote server and sync incremental folder
+    3 - copy backup to remote server and sync increment file and folder
 
-    struct of folder
+    struct of backup folder
                     /x[3]/(backup folder)
-                            x[0]/(app name folder)
+                        x[0]/(app name folder)
+                            data-time/
+                                    increment/
                                     log
                                     log.err
                                     db.ext
                                     files.ext
-
-                                    incremental/
 '''
 
 parser = argparse.ArgumentParser()
@@ -38,9 +43,9 @@ for cfg in args.integers:
 
     print
     print '# # # # # # # # # # # # # # # # # # # # # # # # #'
-    print '# Mr Script. Dump, compact and incremental backup'
-    print '# %s                                             ' % cfg
+    print '# Mr Robot Backup. Dump, compact and increment  #'
     print '# # # # # # # # # # # # # # # # # # # # # # # # #'
+    print '- %s' % cfg
 
     # # # # # # # # # # # # # # # # # # # # # # # #
     # create destiny folder and logs
@@ -89,7 +94,7 @@ for cfg in args.integers:
 
 
     # # # # # # # # # # # # # # # # # # # # # # # #
-    # Dump data base from server
+    # dump data base and compress
     if x[10]:
 
         # DB backup file name 
@@ -117,13 +122,13 @@ for cfg in args.integers:
 
 
     # # # # # # # # # # # # # # # # # # # # # # # #
-    # compact file and folder
+    # compress file and folder
 
-    # backup
+    # output file
     outputfile_backup = u'%s/files.%s' % ( destiny_backup_app, x[6] )
 
     if x[20]:
-        print '> Compact file and folder'
+        print '> Compress file and folder'
 
         # exclude list
         exclude = ''
@@ -135,7 +140,7 @@ for cfg in args.integers:
         for xx in x[21]:
             include += "%s " % xx
 
-        # zip line command
+        # compactor line command
         compact = "%s %s %s %s %s" % ( x[7], x[8] , outputfile_backup, include, exclude )
         test = '%s %s %s' % ( x[7], x[9] , outputfile_backup )
 
@@ -144,9 +149,9 @@ for cfg in args.integers:
 
 
     # # # # # # # # # # # # # # # # # # # # # # # #
-    # incremental file and folder
+    # increment file and folder
     if x[30]:
-        print '> Incremental file and folder'
+        print '> Increment file and folder'
 
         cmd_destiny_backup_app = 'mkdir -p %s/%s' % ( base_backup_app, x[31] )
         cmd_run(cmd_destiny_backup_app)

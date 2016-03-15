@@ -10,7 +10,7 @@ import copy
 
 config = copy.deepcopy(model)
 
-config[0] = 'www_server' # app name (string) Will be used to create a folder backup name
+config[0] = 'www_server' # name of config or app (string) Will be used to create a folder backup name
 config[1] = 'week-full' # frequency of backup (once|daily|week-full|month-full)
 config[2] = False # delete local/temporary backup after copy to remote server (True|False)
                   # if log.err are not empty will be not dropped and a will be send a email to report error.
