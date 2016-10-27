@@ -1,4 +1,0 @@
---- next : update 15 03 2016
-    total size of backup
-    backup date
-    use bzip2 to compact DB or other compactor
