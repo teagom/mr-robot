@@ -1,7 +1,5 @@
---- next : update 15 03 2016
+--- update 27 Mar 2017
     total size of backup
     backup date
-    use bzip2 to compact DB or other compactor
-    to check permission of backup, 700, file content have password and others access.
-        error if not equal 700
-    chmod 700 or custon permission after backup
+    custom chmod and chown permission after backup finish
+    incremental by day, just alter files and folders

@@ -1,6 +1,26 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+'''
+    output of struct of files and folders for these settings, see array position, config[x]
+
+                    config[3] - (root backup folder)
+                    /media/ext-hd/
+                                    configx[0] - (app name folder)
+                                    www_server/
+
+                                                config[31] - incremental folder name
+                                                incremental/
+
+                                                config[1] - model store backup files / frequency of backup (once|daily|week-full|month-full)
+                                                data-time/
+                                                            log
+                                                            log.err
+                                                            db.ext
+                                                            files.ext
+
+'''
+
 from setting import model
 import copy
 
@@ -10,12 +30,12 @@ import copy
 
 config = copy.deepcopy(model)
 
+# base of backup
 config[0] = 'www_server' # name of config or app (string) Will be used to create a folder backup name
 config[1] = 'week-full' # frequency of backup (once|daily|week-full|month-full)
 config[2] = False # delete local/temporary backup after copy to remote server (True|False)
                   # if log.err are not empty will be not dropped and a will be send a email to report error.
                   # I will make backup two times, localhost at external HD and remote server
-
 config[3] = '/media/ext-hd' # full path to backup folder or temporary folder
 config[4] = True # sendmail after finish backup, log and log.err in attach.
 config[5] = 'user@mail.com' # admin email address
@@ -24,7 +44,7 @@ config[5] = 'user@mail.com' # admin email address
 config[6] = 'zip' # extension (string)
 config[7] = '/usr/bin/zip' # full path to binary (string)
 config[8] = '-9r' # parameters to compact (string)
-                  # password, better, faster, recursive, ...
+                  # password(-P passsword), better, faster, recursive, ...
 config[9] = '-T'  # parameters to test (string)
 
 # backup data base

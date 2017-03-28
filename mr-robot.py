@@ -17,11 +17,15 @@ from external import cmd_run, sendmail, dateformat
 
     1 - Dump and compress a Data Base
     2 - Compact file and folder
-    3 - copy backup to remote server and sync increment file and folder
+    3 - sync increment file and folder to incremental folder
+    4 - copy backup to remote server
+    5 - set permissions of folders and files
 
-    struct of backup folder
-                    /x[3]/(backup folder)
-                        x[0]/(app name folder)
+    struct of backup folder, see array position, config[x]
+                    /x[3]/ (root backup folder)
+
+                        x[0]/ (app name folder)
+
                             data-time/
                                     increment/
                                     log
@@ -31,7 +35,7 @@ from external import cmd_run, sendmail, dateformat
 '''
 
 parser = argparse.ArgumentParser()
-parser.add_argument('integers', metavar='N', type=str, nargs='+', help='an integer for the accumulator')
+parser.add_argument('integers', metavar='file.py', type=str, nargs='+', help='Python file, parameters to make backup. See example.py')
 args = parser.parse_args()
 
 # main code 
@@ -44,8 +48,8 @@ for cfg in args.integers:
     print
     print '# # # # # # # # # # # # # # # # # # # # # # # # #'
     print '# Mr Robot Backup. Dump, compact and increment  #'
+    print '# Running %s' % cfg
     print '# # # # # # # # # # # # # # # # # # # # # # # # #'
-    print '- %s' % cfg
 
     # # # # # # # # # # # # # # # # # # # # # # # #
     # create destiny folder and logs

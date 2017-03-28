@@ -1,0 +1,6 @@
+--- 27 March 2017 - Tiago Souza Moraes
+	added
+		set permission of backup files after finish, chmod and chown.
+			separete permission for db, compact files and incremental files.
+		resume of backup, total size, amount of files, total time to make backup.
+			total transfer to remote server

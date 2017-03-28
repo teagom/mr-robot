@@ -5,7 +5,7 @@
     settings
 '''
 # array size
-model = [False]*49
+model = [False]*59
 
 # debug mode. Show line command to debug
 debug = False
