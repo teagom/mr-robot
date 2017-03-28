@@ -116,7 +116,7 @@ for cfg in args.integers:
         if x[11]:
             print '> Dump and compact a data base                 '
             compact = '%s %s %s %s' % ( x[7], x[8], outputfile_db , outputfile_db_tmp )
-            cmd_run(dump, 'dump-database')
+            cmd_run(dump)
             cmd_run(compact, log, log_err, 'dump-database-compact')
 
             if x[9]:
@@ -158,7 +158,7 @@ for cfg in args.integers:
         print '> Increment file and folder'
 
         cmd_destiny_backup_app = 'mkdir -p %s/%s' % ( base_backup_app, x[31] )
-        cmd_run(cmd_destiny_backup_app, 'incremental-file-folder')
+        cmd_run(cmd_destiny_backup_app, log, log_err, 'incremental-file-folder')
 
         include = ""
         for xx in x[32]:
