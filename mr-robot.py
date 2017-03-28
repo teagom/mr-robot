@@ -15,11 +15,11 @@ from external import cmd_run, sendmail, dateformat
         argparse
         sshpass
 
-    1 - Dump and compress a Data Base
+    1 - Dump and compact Data Base
     2 - Compact file and folder
-    3 - sync increment file and folder to incremental folder
+    3 - Sync increment file and folder to incremental folder
     4 - copy backup to remote server
-    5 - set permissions of folders and files
+    5 - Set permission of folder and file
 
     struct of backup folder, see array position, config[x]
                     /x[3]/ (root backup folder)
@@ -115,15 +115,15 @@ for cfg in args.integers:
 
         if x[11]:
             print '> Dump and compact a data base                 '
-
             compact = '%s %s %s %s' % ( x[7], x[8], outputfile_db , outputfile_db_tmp )
-            test = '%s %s %s' % ( x[7], x[9], outputfile_db )
+            cmd_run(dump, 'dump-database')
+            cmd_run(compact, log, log_err, 'dump-database-compact')
 
-            cmd_run(dump)
-            cmd_run(compact, log, log_err)
-            cmd_run(test, log, log_err)
-            cmd_run('rm -f %s' % ( outputfile_db_tmp), log, log_err)
+            if x[9]:
+                test = '%s %s %s' % ( x[7], x[9], outputfile_db )
+                cmd_run(test, log, log_err,'dump-database-test-zip')
 
+            cmd_run('rm -f %s' % (outputfile_db_tmp), log, log_err, 'dump-database-delete-sql')
 
     # # # # # # # # # # # # # # # # # # # # # # # #
     # compress file and folder
@@ -146,11 +146,11 @@ for cfg in args.integers:
 
         # compactor line command
         compact = "%s %s %s %s %s" % ( x[7], x[8] , outputfile_backup, include, exclude )
-        test = '%s %s %s' % ( x[7], x[9] , outputfile_backup )
+        cmd_run(compact, log, log_err, 'file-folder-compact')
 
-        cmd_run(compact, log, log_err)
-        cmd_run(test, log, log_err)
-
+        if x[9]:
+            test = '%s %s %s' % ( x[7], x[9] , outputfile_backup )
+            cmd_run(test, log, log_err, 'file-folder-compact-test')
 
     # # # # # # # # # # # # # # # # # # # # # # # #
     # increment file and folder
@@ -158,7 +158,7 @@ for cfg in args.integers:
         print '> Increment file and folder'
 
         cmd_destiny_backup_app = 'mkdir -p %s/%s' % ( base_backup_app, x[31] )
-        cmd_run(cmd_destiny_backup_app)
+        cmd_run(cmd_destiny_backup_app, 'incremental-file-folder')
 
         include = ""
         for xx in x[32]:
@@ -169,8 +169,7 @@ for cfg in args.integers:
             exclude += "--exclude=\'%s\' " % xx
 
         rsync = "rsync %s %s %s %s/%s" % ( x[44] , exclude , include , base_backup_app , x[31] )
-
-        cmd_run(rsync, log, log_err)
+        cmd_run(rsync, log, log_err, 'file-folder-rsync')
 
 
     # # # # # # # # # # # # # # # # # # # # # # # #
@@ -185,13 +184,23 @@ for cfg in args.integers:
         if x[45] == "pemfile":
             rsync = "rsync %s -e \"ssh -p %s -i %s\" %s %s@%s:%s" % ( x[44] , x[42] , x[46] , base_backup_app , x[47] , x[41] , x[43] )
 
-        if x[45] == "autorized":
+        if x[45] == "authorized":
             rsync = "rsync %s -e \"ssh -p %s \" %s %s@%s:%s" % ( x[44] , x[42] , base_backup_app , x[47] , x[41] , x[43] )
 
-        cmd_run(rsync, log, log_err)
+        cmd_run(rsync, log, log_err, 'rsync-backup')
+
+
+    # permission
+    if x[50]:
+        c = "chown %s %s -R" % (x[50], base_backup_app)
+        cmd_run(c, log, log_err, 'permission-chown')
+
+    if x[51]:
+        c = "chmod %s %s -R" % (x[51], base_backup_app)
+        cmd_run(c, log, log_err, 'permission-chmod')
+
 
     # sendmail
-
     # if log.err not empty then sendmail to report
     import os
 
@@ -202,4 +211,4 @@ for cfg in args.integers:
     if x[2] == True:
         print '> Delete temporary folder or localhost backup'
         clean = 'rm -rf %s' % ( base_backup_app )
-        cmd_run(clean, log, log_err)
+        cmd_run(clean, log, log_err, 'delete-temporary-backup-folder')

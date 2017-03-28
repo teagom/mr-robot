@@ -5,12 +5,15 @@ import os
 from datetime import datetime
 from setting import debug, sender, smtpserver, username, password
 
-def cmd_run(cmd, log=False, log_err=False):
+def cmd_run(cmd, log=False, log_err=False, action=False):
 
     if debug:
         print
         print 'You are seeing this message because debug is True'
         print cmd
+
+    if action:
+        os.system("echo '--- %s' 1>>%s 2>>%s" % (action, log, log_err) )
 
     if not log and not log_err:
         os.system(cmd)
@@ -52,7 +55,7 @@ def sendmail(to, app, attach0=False, attach1=False):
         conn.sendmail(sender, destination, msg.as_string())
         conn.close()
     except:
-        print '    *** Error trying send a mail. Check settings.'
+        print '*** Error trying send a mail. Check settings.'
 
 
 # date format

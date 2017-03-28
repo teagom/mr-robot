@@ -7,7 +7,7 @@
 # array size
 model = [False]*59
 
-# debug mode. Show line command to debug
+# debug mode. Show command line to debug
 debug = False
 
 # smtp
