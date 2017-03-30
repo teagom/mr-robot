@@ -33,7 +33,7 @@ $ mr-robot.py config_app_name.py
 	1	Dump database and compact
 	2 	Compact file and folder
 	3	Increment file and folder
-    4   Copy backup to remote server
+    4       Copy backup to remote server
     5	Set permission for backup folder
     6	Send a mail after finish backup
 
@@ -72,13 +72,13 @@ $ mr-robot.py config_app_name.py
 		daily: never repeat, never overwrite
             incremental new files, folders and altered files
 			output format:
-                			/backup/config_name/31_12_2015-00h01m
+                            /backup/config_name/31_12_2015-00h01m
                             /backup/config_name/31_12_2015-12h01m
                             /backup/config_name/01_01_2016-00h01m
                             /backup/config_name/01_01_2016-12h01m
                             /backup/config_name/...-00h01m
                             /backup/config_name/...-12h01m
-
+                            
         week-full: sunday to saturday / backup of 7 days ago
             incremental new files, folders and altered files
 			output format:
@@ -105,7 +105,7 @@ $ mr-robot.py config_app_name.py
 
                     [3] = '/media/usb-hd/  # full path to backup folder
                     [40] = True            # copy to remote server
-                    
+
     3	(string) full path to backup folder
     4   (True|False) sendmail after finish backup
     5   (string) administrator email address
