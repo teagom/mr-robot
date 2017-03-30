@@ -58,16 +58,13 @@ $ mr-robot.py config_app_name.py
             date-time folder will be created based in frenquency choice.
             folder name will be created based in date-time
             
-		crontab will be define backup hour
-			example: two times per day
-                		12:01 and 00:01 
+		crontab will be define backup time. example: two times per day, 12:01 and 00:01 
 		        
 		once: backup of 1 day ago
-            will overwrite last backup and incremental new files,
-                                folders and altered files
-			output format:
-                            /backup/config_name/00h01m
-                            /backup/config_name/12h01m
+        will overwrite last backup and incremental new files, folders and altered files.
+        output format:
+            /backup/config_name/00h01m
+            /backup/config_name/12h01m
             
 		daily: never repeat, never overwrite
             incremental new files, folders and altered files
@@ -78,7 +75,7 @@ $ mr-robot.py config_app_name.py
                             /backup/config_name/01_01_2016-12h01m
                             /backup/config_name/...-00h01m
                             /backup/config_name/...-12h01m
-                            
+
         week-full: sunday to saturday / backup of 7 days ago
             incremental new files, folders and altered files
             output format:
@@ -98,13 +95,9 @@ $ mr-robot.py config_app_name.py
                             /backup/config_name/31_00h01m
                             /backup/config_name/31_12h01m
 
-    2   (True|False)
-                    Delete local or temporary backup after copy to remote server
-                    If log.err are not empty will be not dropped and a will be send a email to report error.
-                    Is possible to make backup two times, in the external HD and remote server, use False.
-
-                    [3] = '/media/usb-hd/  # full path to backup folder
-                    [40] = True            # copy to remote server
+    2   (True|False) Delete local or temporary backup after copy to remote server
+            If log.err are not empty will be not dropped and a will be send a email to report error.
+            Is possible to make backup two times, in the external HD and remote server, use False.
 
     3   (string) full path to backup folder
     4   (True|False) sendmail after finish backup
@@ -128,17 +121,18 @@ $ mr-robot.py config_app_name.py
     21  (array)	Include theses paths to folder or file.
             ['/etc/apache','/var/www/blog']
     22  (array) exclude ['/var/www/blog/temp/*']
-    		this folder is not be included
-	        use * to exclude all file and folder
+            this folder is not be included
+            use * to exclude all file and folder
 
     --- incremental file and folder
-    30  (True|False)	incremental file and folder
-	31  (string)        incremental folder name
+    30  (True|False) incremental file and folder
+	31  (string) incremental folder name
     32  (array) [ '/etc/' , ' /var/log' , ' /backup/ ' ]
         include file and folder
-	33  exclude	[ 'cacerts','bind9' ]	
-				theses files and folders is not be included
-                Declared just file name or folder name without path.
+	33  exclude	[ 'cacerts','bind9' ]
+            theses files and folders is not be included
+            Declared just file name or folder name without path to.
+
     --- copy to remote server
     40  (True|False) to copy to remote server
     41  (string) ip or hostname
@@ -146,7 +140,7 @@ $ mr-robot.py config_app_name.py
     43  (string) backup folder name in the remote server
     44  (string) rsync parameters '-arvz --progress --partial'
     45  (string) (password|pemfile|authorized)
-    46  (string)  full path to ssh pem file if [45] is pemfile
+    46  (string) full path to ssh pem file if [45] is pemfile
     
     # sshpass are required - $ sudo apt-get install sshpass
     # password - First connection have to be confirmed written "yes" in a line command.
@@ -158,5 +152,5 @@ $ mr-robot.py config_app_name.py
     48  (string) password
 
     --- permission of backup
-    50	(string) owner:group chown
-    51	(string) 700         chmod
+    50  (string) owner:group chown
+    51  (string) 700         chmod
