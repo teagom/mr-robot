@@ -34,7 +34,8 @@ $ mr-robot.py config_app_name.py
 	2 	Compact file and folder
 	3	Increment file and folder
     4   Copy backup to remote server
-    5	Send a mail after finish backup.
+    5	Set permission for backup folder
+    6	Send a mail after finish backup
 
 	--- struct of file and folder:
 
@@ -77,7 +78,7 @@ $ mr-robot.py config_app_name.py
                             /backup/config_name/01_01_2016-12h01m
                             /backup/config_name/...-00h01m
                             /backup/config_name/...-12h01m
-                
+
         week-full: sunday to saturday / backup of 7 days ago
             incremental new files, folders and altered files
 			output format:
