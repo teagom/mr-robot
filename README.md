@@ -145,7 +145,7 @@ $ mr-robot.py config_app_name.py
     42	(string) port port number
     43	(string) backup folder name in the remote server
     44  (string) rsync parameters '-arvz --progress --partial'
-    45  (string) (password|pemfile|autorized)
+    45  (string) (password|pemfile|authorized)
     46  (string)  full path to ssh pem file if [45] is pemfile
     
     # sshpass are required - $ sudo apt-get install sshpass
