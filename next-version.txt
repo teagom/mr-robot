@@ -1,0 +1,5 @@
+--- update 27 Mar 2017
+    total size of backup
+    backup date
+    custom chmod and chown permission after backup finish
+    incremental by day, just alter files and folders
