@@ -33,7 +33,7 @@ $ mr-robot.py config_app_name.py
 	1	Dump database and compact
 	2 	Compact file and folder
 	3	Increment file and folder
-  	4   Copy backup to remote server
+    4   Copy backup to remote server
     5	Send a mail after finish backup.
 
 	--- struct of file and folder:
