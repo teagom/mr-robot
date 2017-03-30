@@ -3,16 +3,21 @@
 
 # download from github
 $ git clone https://github.com/teagom/mr-robot.git
+
 $ cd mr-robot
 
 # to copy a example.py
 $ cp example.py config_app_name.py
+
 $ chmod 700 config_app_name.py
+
 $ vim config_app_name.py
 
 # new setting
 $ cp setting.py.DIST settings.py
+
 $ chmod 700 setting.py
+
 $ vim setting.py
 
 # Security content of this script because user and password.
