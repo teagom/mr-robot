@@ -66,9 +66,9 @@ $ mr-robot.py config_app_name.py
                             /backup/config_name/00h01m
                             /backup/config_name/12h01m
             
-		daily: never repeat, never overwrite
+        daily: never repeat, never overwrite
             incremental new files, folders and altered files
-			output format:
+            output format:
                             /backup/config_name/31_12_2015-00h01m
                             /backup/config_name/31_12_2015-12h01m
                             /backup/config_name/01_01_2016-00h01m
