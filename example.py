@@ -42,10 +42,12 @@ config[5] = 'user@mail.com' # admin email address
 
 # options to compact file and dump of data base
 config[6] = 'zip' # extension (string)
-config[7] = '/usr/bin/zip' # full path to binary (string)
-config[8] = '-9r' # parameters to compact (string)
-                  # password(-P passsword), better, faster, recursive, ...
-config[9] = '-T'  # parameters to test (string)
+config[7] = '/usr/bin/zip -9r -P test'
+            # full path to binary (string)
+            # parameters to compact, password(-P passsword), better, faster, recursive, ...
+config[8] = '/usr/bin/unzip -t -P test'
+            # full path to binary (string)
+            # parameters to test and password(-P passsword)
 
 # data base settings
 config[10] =  True # dump of database (True|False)

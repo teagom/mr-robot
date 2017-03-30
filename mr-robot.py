@@ -115,12 +115,12 @@ for cfg in args.integers:
 
         if x[11]:
             print '> Dump and compact a data base                 '
-            compact = '%s %s %s %s' % ( x[7], x[8], outputfile_db , outputfile_db_tmp )
+            compact = '%s %s %s' % ( x[7], outputfile_db, outputfile_db_tmp )
             cmd_run(dump)
             cmd_run(compact, log, log_err, 'dump-database-compact')
 
-            if x[9]:
-                test = '%s %s %s' % ( x[7], x[9], outputfile_db )
+            if x[8]:
+                test = '%s %s' % ( x[8], outputfile_db )
                 cmd_run(test, log, log_err,'dump-database-test-zip')
 
             cmd_run('rm -f %s' % (outputfile_db_tmp), log, log_err, 'dump-database-delete-sql')
@@ -145,11 +145,11 @@ for cfg in args.integers:
             include += "%s " % xx
 
         # compactor line command
-        compact = "%s %s %s %s %s" % ( x[7], x[8] , outputfile_backup, include, exclude )
+        compact = "%s %s %s %s" % ( x[7], outputfile_backup, include, exclude )
         cmd_run(compact, log, log_err, 'file-folder-compact')
 
-        if x[9]:
-            test = '%s %s %s' % ( x[7], x[9] , outputfile_backup )
+        if x[8]:
+            test = '%s %s' % ( x[8], outputfile_backup )
             cmd_run(test, log, log_err, 'file-folder-compact-test')
 
     # # # # # # # # # # # # # # # # # # # # # # # #
