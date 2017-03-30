@@ -61,10 +61,10 @@ $ mr-robot.py config_app_name.py
 		crontab will be define backup time. example: two times per day, 12:01 and 00:01 
 		        
 		once: backup of 1 day ago
-        will overwrite last backup and incremental new files, folders and altered files.
-        output format:
-            /backup/config_name/00h01m
-            /backup/config_name/12h01m
+            will overwrite last backup and incremental new files, folders and altered files.
+            output format:
+                            /backup/config_name/00h01m
+                            /backup/config_name/12h01m
             
 		daily: never repeat, never overwrite
             incremental new files, folders and altered files
