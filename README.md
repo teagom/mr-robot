@@ -81,7 +81,7 @@ $ mr-robot.py config_app_name.py
                             
         week-full: sunday to saturday / backup of 7 days ago
             incremental new files, folders and altered files
-			output format:
+            output format:
                             /backup/config_name/sunday_00h01m
                             /backup/config_name/sunday_12h01m
                             /backup/config_name/..._00h01m
@@ -106,7 +106,7 @@ $ mr-robot.py config_app_name.py
                     [3] = '/media/usb-hd/  # full path to backup folder
                     [40] = True            # copy to remote server
 
-    3	(string) full path to backup folder
+    3   (string) full path to backup folder
     4   (True|False) sendmail after finish backup
     5   (string) administrator email address
     
@@ -125,26 +125,25 @@ $ mr-robot.py config_app_name.py
         
     --- compress file and folder
     20  (True|False) compress file and folder
-    21	(array)	Include theses paths to folder or file.
-                ['/etc/apache','/var/www/blog']
-                
-    22 	(array) exclude ['/var/www/blog/temp/*']
+    21  (array)	Include theses paths to folder or file.
+            ['/etc/apache','/var/www/blog']
+    22  (array) exclude ['/var/www/blog/temp/*']
     		this folder is not be included
 	        use * to exclude all file and folder
 
     --- incremental file and folder
     30  (True|False)	incremental file and folder
 	31  (string)        incremental folder name
-    32	(array) [ '/etc/' , ' /var/log' , ' /backup/ ' ]
+    32  (array) [ '/etc/' , ' /var/log' , ' /backup/ ' ]
         include file and folder
-	33	exclude	[ 'cacerts','bind9' ]	
+	33  exclude	[ 'cacerts','bind9' ]	
 				theses files and folders is not be included
                 Declared just file name or folder name without path.
     --- copy to remote server
     40  (True|False) to copy to remote server
-    41	(string) ip or hostname
-    42	(string) port port number
-    43	(string) backup folder name in the remote server
+    41  (string) ip or hostname
+    42  (string) port port number
+    43  (string) backup folder name in the remote server
     44  (string) rsync parameters '-arvz --progress --partial'
     45  (string) (password|pemfile|authorized)
     46  (string)  full path to ssh pem file if [45] is pemfile
@@ -155,8 +154,8 @@ $ mr-robot.py config_app_name.py
     # The authenticity of host '([192.168.0.254]:222)' can't be established.
     # ECDSA key fingerprint is bb:ee:cc:ee:aa:ff:gg.
     # Are you sure you want to continue connecting (yes/no)?
-    47	(string) username
-    48	(string) password
+    47  (string) username
+    48  (string) password
 
     --- permission of backup
     50	(string) owner:group chown
