@@ -78,7 +78,7 @@ config[41] = '192.168.0.254' # server ip or hostname (string)
 config[42] = '222' # ssh port (string)
 config[43] = '~/backup' # destiny folder in the remote server (string)
 config[44] = '-arvz --progress --partial'  # rsync parameters (string)
-config[45] = 'password' # authentication type (string), (password|pemfile|autorized)
+config[45] = 'password' # authentication type (string), (password|pemfile|authorized)
 
 # password - First connection have to be confirmed written "yes" in a command line.
 # sshpass are required - $ sudo apt-get install sshpass
