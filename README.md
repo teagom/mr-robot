@@ -3,91 +3,99 @@
 
 # download from github
 $ git clone https://github.com/teagom/mr-robot.git
+
 $ cd mr-robot
 
 # to copy a example.py
-$ cp example.py  config_app_name.py
+$ cp example.py config_app_name.py
 
-# change settings
+$ chmod 700 config_app_name.py
+
 $ vim config_app_name.py
+
+# new setting
+$ cp setting.py.DIST settings.py
+
+$ chmod 700 setting.py
+
+$ vim setting.py
+
+# Security content of this script because user and password.
+# Keep safe the content of scripts.
+$ chmod 700 mr-robot.py
 
 # run mr-robot backup script
 $ mr-robot.py config_app_name.py
 
-# Security content of this script beacause user and password content.
-# Keep safe the content of this script.
-$ chmod 700 mr-robot.py
-
 --- The ideia of this script is make a full backup for server or app.
 	
 	Step by step to facility the backup life!
-	1	dump database and compress
-	2 	compress file and folder
+	1	Dump database and compact
+	2 	Compact file and folder
 	3	Increment file and folder
-    	4   	Copy backup to remote server
-5	send a mail after finish backup.
+    4   Copy backup to remote server
+    5	Send a mail after finish backup.
 
-	struct of file and folder
+	--- struct of file and folder:
+
         		backup-folder/
-                		app_config_name/
-                        			date-time/ ( maybe more than one backup per day )
-                                		increment/
-                                		db.ext
-                                		files.ext
-                                		log
-                                		log.err
+                            app_config_name/
+                                            incremental/
+                                            date-time/ ( maybe more than one backup per day )
+                                                        db.ext
+                                                        files.ext
+                                                        log
+                                                        log.err
 	
 --- config array
+
 	--- base
 	0	config or app name ( string )
 	1	frequency of backup (once|daily|week-full|month-full)
 
-            frequency
-date-time folder will be created based in frenquency choice.
-           			 folder name will be created based in date-time
+        frequency
+            date-time folder will be created based in frenquency choice.
+            folder name will be created based in date-time
             
 		crontab will be define backup hour
 			example: two times per day
                 		12:01 and 00:01 
 		        
 		once: backup of 1 day ago
-will overwrite last backup and incremental new files,
-            		folders and altered files
+            will overwrite last backup and incremental new files,
+                                folders and altered files
 			output format:
-			/backup/config_name/00h01m
-                		/backup/config_name/12h01m
+                            /backup/config_name/00h01m
+                            /backup/config_name/12h01m
             
 		daily: never repeat, never overwrite
-            		incremental new files, folders and altered files
+            incremental new files, folders and altered files
 			output format:
                 			/backup/config_name/31_12_2015-00h01m
-/backup/config_name/31_12_2015-12h01m
-/backup/config_name/01_01_2016-00h01m
-/backup/config_name/01_01_2016-12h01m
-/backup/config_name/...-00h01m
-/backup/config_name/...-12h01m
+                            /backup/config_name/31_12_2015-12h01m
+                            /backup/config_name/01_01_2016-00h01m
+                            /backup/config_name/01_01_2016-12h01m
+                            /backup/config_name/...-00h01m
+                            /backup/config_name/...-12h01m
                 
-        		week-full: sunday to saturday / backup of 7 days ago
-            		incremental new files, folders and altered files
+        week-full: sunday to saturday / backup of 7 days ago
+            incremental new files, folders and altered files
 			output format:
-	/backup/config_name/sunday_00h01m
-            /backup/config_name/sunday_12h01m
-            /backup/config_name/..._00h01m
-            /backup/config_name/..._12h01m
-            /backup/config_name/saturday_00h01m
-            /backup/config_name/saturday_12h01m
+                            /backup/config_name/sunday_00h01m
+                            /backup/config_name/sunday_12h01m
+                            /backup/config_name/..._00h01m
+                            /backup/config_name/..._12h01m
+                            /backup/config_name/saturday_00h01m
+                            /backup/config_name/saturday_12h01m
             
-
-
-
 		month-full: 01 to 31
 			output format:
-	/backup/config_name/01_00h01m
-            /backup/config_name/01_12h01m
-            /backup/config_name/..._00h01m
-            /backup/config_name/..._12h01m
-            /backup/config_name/31_00h01m
-            /backup/config_name/31_12h01m
+                            /backup/config_name/01_00h01m
+                            /backup/config_name/01_12h01m
+                            /backup/config_name/..._00h01m
+                            /backup/config_name/..._12h01m
+                            /backup/config_name/31_00h01m
+                            /backup/config_name/31_12h01m
 
     2   (True|False)
                     Delete local or temporary backup after copy to remote server
@@ -103,9 +111,8 @@ will overwrite last backup and incremental new files,
     
     --- compress settings
     6   (string) extension file of compactor program
-	7   (string) full path to binary compactor
-    8   (string) parameters to compress
-    9   (string) parameters to test compacted file
+	7   (string) full path to binary and parameters to compact
+    8   (string) full path to binary and parameters to test
     
     --- database
     10  (True|False) Dump database
@@ -147,6 +154,9 @@ will overwrite last backup and incremental new files,
     # The authenticity of host '([192.168.0.254]:222)' can't be established.
     # ECDSA key fingerprint is bb:ee:cc:ee:aa:ff:gg.
     # Are you sure you want to continue connecting (yes/no)?
-
     47	(string) username
     48	(string) password
+
+    --- permission of backup
+    50	(string) owner:group chown
+    51	(string) 700         chmod
