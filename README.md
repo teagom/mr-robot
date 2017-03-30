@@ -61,14 +61,14 @@ $ mr-robot.py config_app_name.py
 		crontab will be define backup time. example: two times per day, 12:01 and 00:01 
 		        
 		once: backup of 1 day ago
-            will overwrite last backup and incremental new files, folders and altered files.
-            output format:
+                will overwrite last backup and incremental new files, folders and altered files.
+                output format:
                             /backup/config_name/00h01m
                             /backup/config_name/12h01m
 
             daily: never repeat, never overwrite
-            incremental new files, folders and altered files
-            output format:
+                    incremental new files, folders and altered files
+                    output format:
                             /backup/config_name/31_12_2015-00h01m
                             /backup/config_name/31_12_2015-12h01m
                             /backup/config_name/01_01_2016-00h01m
@@ -76,15 +76,15 @@ $ mr-robot.py config_app_name.py
                             /backup/config_name/...-00h01m
                             /backup/config_name/...-12h01m
 
-        week-full: sunday to saturday / backup of 7 days ago
-            incremental new files, folders and altered files
-            output format:
-                            /backup/config_name/sunday_00h01m
-                            /backup/config_name/sunday_12h01m
-                            /backup/config_name/..._00h01m
-                            /backup/config_name/..._12h01m
-                            /backup/config_name/saturday_00h01m
-                            /backup/config_name/saturday_12h01m
+            week-full: sunday to saturday / backup of 7 days ago
+                incremental new files, folders and altered files
+                output format:
+                                /backup/config_name/sunday_00h01m
+                                /backup/config_name/sunday_12h01m
+                                /backup/config_name/..._00h01m
+                                /backup/config_name/..._12h01m
+                                /backup/config_name/saturday_00h01m
+                                /backup/config_name/saturday_12h01m
             
 		month-full: 01 to 31
 			output format:
