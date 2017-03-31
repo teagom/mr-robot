@@ -173,6 +173,19 @@ for cfg in args.integers:
 
 
     # # # # # # # # # # # # # # # # # # # # # # # #
+    # set permission
+    # change permission before transfer to preserve
+    # permission at remove server.
+    if x[50]:
+        c = "chown %s %s -R" % (x[50], base_backup_app)
+        cmd_run(c, log, log_err, 'permission-chown')
+
+    if x[51]:
+        c = "chmod %s %s -R" % (x[51], base_backup_app)
+        cmd_run(c, log, log_err, 'permission-chmod')
+
+
+    # # # # # # # # # # # # # # # # # # # # # # # #
     # transfer all backup to remote server. 
     # rsync from localhost to remote 
     if x[40]:
@@ -188,16 +201,6 @@ for cfg in args.integers:
             rsync = "rsync %s -e \"ssh -p %s \" %s %s@%s:%s" % ( x[44] , x[42] , base_backup_app , x[47] , x[41] , x[43] )
 
         cmd_run(rsync, log, log_err, 'rsync-backup')
-
-
-    # permission
-    if x[50]:
-        c = "chown %s %s -R" % (x[50], base_backup_app)
-        cmd_run(c, log, log_err, 'permission-chown')
-
-    if x[51]:
-        c = "chmod %s %s -R" % (x[51], base_backup_app)
-        cmd_run(c, log, log_err, 'permission-chmod')
 
 
     # sendmail
