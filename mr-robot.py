@@ -111,7 +111,7 @@ for cfg in args.integers:
 
         # mysql
         if x[11] == 'mysql' :
-            dump = 'mysqldump --password="%s" -h %s -u %s %s >  %s' % ( x[15], x[12], x[14], x[13], outputfile_db_tmp )
+            dump = 'MYSQL_PWD="%s" mysqldump -h %s -u %s %s >  %s' % ( x[15], x[12], x[14], x[13], outputfile_db_tmp )
 
         if x[11]:
             print '> Dump and compact a data base                 '
